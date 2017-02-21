@@ -43,15 +43,15 @@ for key, extra in extras_require.items():
         extras_require['docs'] += extra
 
 setup(
-    name='Flask-Sitemap',
+    name='Flask-Sitemap-Domain',
     version=version,
-    url='http://github.com/inveniosoftware/flask-sitemap/',
+    url='https://github.com/egillingham/flask-sitemap/',
     license='BSD',
-    author='Invenio collaboration',
-    author_email='info@inveniosoftware.org',
+    author='Invenio collaboration + Erin Gillingham',
+    author_email='e.gillingham@gmail.com',
     description='Flask extension that helps with sitemap generation.',
     long_description=open('README.rst').read(),
-    packages=['flask_sitemap'],
+    packages=['flask_sitemap_domain'],
     zip_safe=False,
     include_package_data=True,
     platforms='any',
