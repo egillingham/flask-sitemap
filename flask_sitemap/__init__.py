@@ -28,6 +28,7 @@ from __future__ import absolute_import
 
 import gzip
 import sys
+import urlparse
 
 from collections import Mapping
 from flask import current_app, request, Blueprint, render_template, url_for, \
@@ -70,17 +71,18 @@ sitemap_page_needed = _signals.signal('sitemap-page-needed')
 class Sitemap(object):
     """Flask extension implementation."""
 
-    def __init__(self, app=None):
+    def __init__(self, app=None, force_domain=None):
         """Initialize login callback."""
         self.decorators = []
         self.url_generators = [self._routes_without_params]
 
         if app is not None:
-            self.init_app(app)
+            self.init_app(app, force_domain)
 
-    def init_app(self, app):
+    def init_app(self, app, force_domain=None):
         """Initialize a Flask application."""
         self.app = app
+        self.force_domain = force_domain
         # Follow the Flask guidelines on usage of app.extensions
         if not hasattr(app, 'extensions'):
             app.extensions = {}
@@ -234,7 +236,12 @@ class Sitemap(object):
                             continue
 
                         values.update(kwargs)
-                        result['loc'] = url_for(endpoint, **values)
+                        url = url_for(endpoint, **values)
+                        if self.force_domain:
+                            parsed = urlparse.urlparse(url)
+                            replaced = parsed._replace(netloc=self.force_domain)
+                            url = replaced.geturl()
+                        result['loc'] = url
                     yield result
 
     def gzip_response(self, data):
