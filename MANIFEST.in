@@ -10,7 +10,7 @@
 include *.rst
 include *.sh
 include .coveragerc
-include .lgtm MAINTAINERS
+include MAINTAINERS
 include LICENSE AUTHORS CHANGES
 include docs/*.rst docs/*.py docs/Makefile docs/requirements.txt
 include pytest.ini
