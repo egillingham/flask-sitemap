@@ -50,7 +50,7 @@ setup(
     author='Invenio collaboration + Erin Gillingham',
     author_email='e.gillingham@gmail.com',
     description='Flask extension that helps with sitemap generation.',
-    long_description=open('README.md').read(),
+    long_description=open('README.rst').read(),
     packages=['flask_sitemap_domain'],
     zip_safe=False,
     include_package_data=True,
