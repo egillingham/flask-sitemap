@@ -13,7 +13,7 @@ Flask-Sitemap generates an application sitemap.xml.
 Initialization of the extension:
 
 >>> from flask import Flask
->>> from flask_sitemap import Sitemap
+>>> from flask_sitemap_domain import Sitemap
 >>> app = Flask('myapp')
 >>> ext = Sitemap(app=app)
 
@@ -147,7 +147,7 @@ class Sitemap(object):
             urlset = [None]
 
         if urlset[-1] is None:
-            return render_template('flask_sitemap/sitemap.xml',
+            return render_template('flask_sitemap_domain/sitemap.xml',
                                    urlset=filter(None, urlset))
 
         def pages():
@@ -156,21 +156,21 @@ class Sitemap(object):
                 _scheme=self.app.config.get('SITEMAP_URL_SCHEME')
             )
             kwargs['page'] = 1
-            yield {'loc': url_for('flask_sitemap.page', **kwargs)}
+            yield {'loc': url_for('flask_sitemap_domain.page', **kwargs)}
             sitemap_page_needed.send(current_app._get_current_object(),
                                      page=1, urlset=urlset)
             for urlset_ in run:
                 kwargs['page'] += 1
-                yield {'loc': url_for('flask_sitemap.page', **kwargs)}
+                yield {'loc': url_for('flask_sitemap_domain.page', **kwargs)}
                 sitemap_page_needed.send(current_app._get_current_object(),
                                          page=kwargs['page'], urlset=urlset_)
 
-        return render_template('flask_sitemap/sitemapindex.xml',
+        return render_template('flask_sitemap_domain/sitemapindex.xml',
                                sitemaps=pages())
 
     def render_page(self, urlset=None):
         """Render GZipped sitemap template with given url set."""
-        return render_template('flask_sitemap/sitemap.xml',
+        return render_template('flask_sitemap_domain/sitemap.xml',
                                urlset=urlset or [])
 
     def page(self, page):

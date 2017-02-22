@@ -19,7 +19,7 @@ SITEMAP_BLUEPRINT
 
 If ``None`` or ``False`` then the Blueprint is not registered.
 
-Default: ``flask_sitemap``.
+Default: ``flask_sitemap_domain``.
 
 SITEMAP_GZIP
 ------------
@@ -72,7 +72,7 @@ there is 10MB limitation for the file.
 Default: ``10000``.
 """
 
-SITEMAP_BLUEPRINT = 'flask_sitemap'
+SITEMAP_BLUEPRINT = 'flask_sitemap_domain'
 
 SITEMAP_BLUEPRINT_URL_PREFIX = '/'
 

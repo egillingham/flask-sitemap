@@ -19,7 +19,7 @@ from tempfile import mkdtemp
 
 from flask import request_started, request, url_for
 from flask_script import Manager
-from flask_sitemap import Sitemap, b, config as default_config, \
+from flask_sitemap_domain import Sitemap, b, config as default_config, \
     script, sitemap_page_needed
 
 from .helpers import FlaskTestCase
@@ -31,7 +31,7 @@ class TestSitemap(FlaskTestCase):
 
     def test_version(self):
         # Assert that version number can be parsed.
-        from flask_sitemap import __version__
+        from flask_sitemap_domain import __version__
         from distutils.version import LooseVersion
         LooseVersion(__version__)
 

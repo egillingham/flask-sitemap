@@ -9,7 +9,7 @@
 
 """Version information for Flask-Sitemap.
 
-This file is imported by ``flask_sitemap.__init__``, and parsed by
+This file is imported by ``flask_sitemap_domain.__init__``, and parsed by
 ``setup.py`` as well as ``docs/conf.py``.
 """
 
