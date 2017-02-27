@@ -18,5 +18,5 @@ include tests/*.py
 include tox.ini
 recursive-include docs/_templates *.html
 recursive-include docs/_themes *.py *.css *.css_t *.conf *.html README
-recursive-include flask_sitemap *.xml
+recursive-include flask_sitemap_domain *.xml
 recursive-include tests *.xml
